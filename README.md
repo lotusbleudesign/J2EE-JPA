@@ -14,7 +14,9 @@ Via Spring, création d’un projet avec :
 
 
 Importer via un éditeur de type Intellij ou Eclipse et modifier le fichier « build.gradle » les dépendances :
+
 dependencies {
+
    implementation 'org.springframework.boot:spring-boot-starter-web'
    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
    runtime("com.h2database:h2")
