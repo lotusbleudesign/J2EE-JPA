@@ -25,7 +25,7 @@ dependencies {
    }
 }
 
-Activer la console H2 dans le fichier « application.properties »
+Activer la console H2 dans le fichier « application.properties » :
 spring.h2.console.enabled=true 
 
 Builder et relancer le tout.
