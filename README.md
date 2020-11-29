@@ -1,39 +1,42 @@
-# JAVA-J2EE
-Différentes étapes de création d'application J2E
+# CarRental Rest Web Service with Spring
 
-TP Spring Data JPA location de voiture :
+Download and unzip the project (outside the Eclipse workspace)
 
-Création d’une application avec une base de données.
-Dans ce module, utilisation d’H2, qui est une base de données de type in-memory.
+Open a command line window (project location).
 
-Étapes :
+Use the following command to build the project (download libraries, compilation…):
+-	gradlew build			    	under windows
+-	./gradlew build			    	under Linux
 
-Via Spring, création d’un projet avec :
--	Gradle
--	Ajouter de la librairie Spring data JPA, Spring Web et Spring Boot DevTools 
+Use the following command to convert the project in an Eclipse project:
+-	gradlew eclipse					under windows
+-	./gradlew eclipse				under Linux
 
+Import the project under Eclipse: File->Import->General-> Existing project into workspace ... select the project directory
 
-Importer via un éditeur de type Intellij ou Eclipse et modifier le fichier « build.gradle » les dépendances :
+Launch the main program: https://github.com/charroux/CarService/blob/master/src/main/java/com/example/CarRental/CarRentalApplication.java
 
-dependencies {
+Open a web browser to test the http get request: http://localhost:8080/cars
 
-   implementation 'org.springframework.boot:spring-boot-starter-web'
-   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-   runtime("com.h2database:h2")
-   testImplementation('org.springframework.boot:spring-boot-starter-test') {
-      exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-   }
-}
+# Test with curl
 
-Activer la console H2 dans le fichier « application.properties » :
-spring.h2.console.enabled=true 
+curl -X GET -i http://localhost:8080/cars
 
-Builder et relancer le tout.
+curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/cars --data '{"plateNumber":"55DD77", "brand": "Mazerati", "price":2000, "rent":false}'
 
-Vous pouvez tester la console d’H2 :
-http://localhost:8080/h2-console 
+curl -X PUT -H 'Content-Type: application/json' -i 'http://localhost:8080/cars/11AA22?rent=true' --data '{"begin":"5/5/2025", "end": "7/5/2025"}'
 
-Ensuite, modifiez l'URL JDBC avec la bonne URL fournie dans la console Eclipse ou Intellij.
-jdbc:h2:mem:dca7f3e9-95e2-425d-9ccf-c0aa71824aa1
+curl -X PUT -H 'Content-Type: application/json' -i 'http://localhost:8080/cars/11AA22?rent=false'
 
+# Java Rest client
+
+Launch the main program: https://github.com/charroux/CarService/blob/master/src/main/java/com/example/CarRental/CarRentalClient.java
+
+# Javascript client
+
+Open a web browser to test the Javascript program: http://localhost:8080/static/index.html
+
+The web part configuration: https://github.com/charroux/CarService/tree/master/src/main/webapp/WEB-INF
+
+The html part: https://github.com/charroux/CarService/tree/master/src/main/webapp/static
 
